@@ -28,5 +28,6 @@ namespace BLL.Interface
         List<Model.Chitatel> GetAllChit();
         void Create_Outtype(Model.Outtype o);
         List<Model.Chitatel_status> GetAllChitatelStatus();
+        void Book_status_change(Model.Book p, int stat_id);
     }
 }

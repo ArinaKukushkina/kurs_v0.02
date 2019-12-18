@@ -70,8 +70,16 @@ namespace BLL
         public void CreateOut(Model.Out p)
         {
             db.Out.Create(new DAL.Out { Id_book= p.Id_book, Id_chit = p.Id_chit, Date = DateTime.Now,Outtype_id=p.Outtype_id });
-            UpdateBook(GetBook(p.Id_book));
+            Book_status_change(GetBook(p.Id_book), p.Outtype_id);
 
+        }
+
+        public void Book_status_change(Model.Book p, int stat_id)
+        {
+            DAL.Book tmp = db.Book.GetItem(p.Id);
+            tmp.Status_id = stat_id;
+            db.Book.Update(tmp);
+            Save();
         }
 
         public void UpdateBook(Model.Book p)
