@@ -50,7 +50,9 @@ namespace BLL
 
         public Model.Book GetBook(int BookId)
         {
-            throw new NotImplementedException();
+           
+            DAL.Book tmp= db.Book.GetItem(BookId);
+            return new Model.Book(tmp, db.Izdatelstvo.GetItem(tmp.Izdatelstvo_id), db.Book_status.GetItem(tmp.Status_id), db.Rubrika.GetItem(tmp.Rubrika_id));
         }
 
         public void CreateBook(Model.Book p)
@@ -68,12 +70,16 @@ namespace BLL
         public void CreateOut(Model.Out p)
         {
             db.Out.Create(new DAL.Out { Id_book= p.Id_book, Id_chit = p.Id_chit, Date = DateTime.Now,Outtype_id=p.Outtype_id });
+            UpdateBook(GetBook(p.Id_book));
 
         }
 
         public void UpdateBook(Model.Book p)
         {
-            throw new NotImplementedException();
+            DAL.Book tmp = db.Book.GetItem(p.Id);
+            tmp.Status_id = 1;
+            db.Book.Update(tmp);
+            Save();
         }
 
         public void UpdateChit(Model.Chitatel p)
