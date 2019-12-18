@@ -1,0 +1,25 @@
+﻿<Window x:Class="kurs_v0._01.Out_chit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kurs_v0._01"
+        mc:Ignorable="d"
+        Title="Out_chit" Height="532.952" Width="660.392">
+    <Grid Margin="0,0,2,0">
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="39,38,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="179,38,0,0" VerticalAlignment="Top" Width="75" Height="23"/>
+        <DataGrid x:Name="books_l" HorizontalAlignment="Left" Height="404" Margin="39,72,-117,0" VerticalAlignment="Top" Width="565">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Out_from_chit">Выдать</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock x:Name="info" HorizontalAlignment="Left" Margin="39,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="565"/>
+    </Grid>
+</Window>

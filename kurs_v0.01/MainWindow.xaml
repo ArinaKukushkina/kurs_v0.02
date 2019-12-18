@@ -1,0 +1,75 @@
+﻿<Window x:Class="kurs_v0._01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kurs_v0._01"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="374" Margin="22,21,0,0" VerticalAlignment="Top" Width="749">
+            <TabItem Header="Читатель">
+                <Grid Background="#FFE5E5E5">
+                    <Grid HorizontalAlignment="Left" Height="328" Margin="10,18,0,0" VerticalAlignment="Top" Width="372">
+                        <TextBox HorizontalAlignment="Left" Height="23" Margin="14,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166"/>
+                        <Button Content="Поиск" HorizontalAlignment="Left" Margin="194,13,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-1.013,0.7">
+                            <Button.Background>
+                                <ImageBrush/>
+                            </Button.Background>
+                        </Button>
+                        <DataGrid x:Name="chit_list" HorizontalAlignment="Left" Height="277" Margin="14,49,0,0" VerticalAlignment="Top" Width="347" MouseUp="refresh_list" MouseDoubleClick="chit_list_MouseDoubleClick"/>
+                        <CheckBox Content="Должники" HorizontalAlignment="Left" Margin="285,16,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="308" Margin="387,18,0,0" VerticalAlignment="Top" Width="346"/>
+                    <Button Content="Выдать" HorizontalAlignment="Left" Margin="400,31,0,0" VerticalAlignment="Top" Width="156" Click="Button_Click_4"/>
+                    <TabControl HorizontalAlignment="Left" Height="290" Margin="400,56,0,0" VerticalAlignment="Top" Width="333">
+                        <TabItem Header="История">
+                            <Grid Background="#FFE5E5E5" Margin="0,0,0,-2">
+                                <DataGrid x:Name="list_out_chit" HorizontalAlignment="Left" Height="244" Margin="10,10,0,0" VerticalAlignment="Top" Width="307"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Выданные книги">
+                            <Grid Background="#FFE5E5E5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="6*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="17*"/>
+                                    <ColumnDefinition Width="289*"/>
+                                </Grid.ColumnDefinitions>
+                                <DataGrid x:Name="list_book_chit" HorizontalAlignment="Left" Height="232" Margin="4,10,0,0" VerticalAlignment="Top" Width="307" Grid.ColumnSpan="3" Grid.Column="1">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Click="return_book_from_chit">Принять</Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                    <Button Content="Открыть карточку" HorizontalAlignment="Left" Margin="575,31,0,0" VerticalAlignment="Top" Width="141" Click="Button_Click_1"/>
+                    <Button Content="Добавить нового читателя" HorizontalAlignment="Left" Margin="25,3,0,0" VerticalAlignment="Top" Width="691" Click="Button_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Книги">
+                <Grid Background="#FFE5E5E5">
+                    <Grid HorizontalAlignment="Left" Height="41" Margin="22,37,0,0" VerticalAlignment="Top" Width="711">
+                        <TextBox HorizontalAlignment="Left" Height="23" Margin="0,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="302"/>
+                        <Button Content="Поиск" HorizontalAlignment="Left" Margin="324,11,0,0" VerticalAlignment="Top" Width="75"/>
+                        <Button Content="Расширенный поиск" HorizontalAlignment="Left" Margin="421,11,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_3"/>
+                    </Grid>
+                    <Button Content="Добавить книгу" HorizontalAlignment="Left" Margin="22,9,0,0" VerticalAlignment="Top" Width="711" Click="Button_Click_2"/>
+                    <Grid HorizontalAlignment="Left" Height="256" Margin="22,80,0,0" VerticalAlignment="Top" Width="711">
+                        <DataGrid HorizontalAlignment="Left" Height="236" Margin="10,10,-325,0" VerticalAlignment="Top" Width="695"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="253" Margin="407,83,0,0" VerticalAlignment="Top" Width="336"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
