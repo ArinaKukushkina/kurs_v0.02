@@ -216,5 +216,20 @@ namespace kurs_v0._01
             }
             refresh();
         }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            card_izd iz = new card_izd();
+            iz.Show();
+            iz.Closing += Add_izd;
+        }
+        private void Add_izd(object sender, CancelEventArgs e)
+        {
+            if((sender as card_izd).ok)
+            {
+                crudServ.Create_izdat((sender as card_izd).izd);
+            }
+            refresh();
+        }
     }
 }

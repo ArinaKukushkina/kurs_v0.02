@@ -73,7 +73,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Настройки" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="92" Margin="-2,-2,-36,0">
+            <TabItem Header="Настройки" HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="92" Margin="-2,0,0,0">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="143*"/>
@@ -96,7 +96,7 @@
                             <Label Content="Издательства" HorizontalAlignment="Left" Margin="132,0,0,300" VerticalAlignment="Bottom" RenderTransformOrigin="0.016,0.602"/>
                         </Grid>
                     </Border>
-                    <Button Content="Добавить рубрику" HorizontalAlignment="Left" Margin="238,43,0,0" VerticalAlignment="Top" Width="341" Grid.Column="1"/>
+                    <Button Content="Добавить издательство" HorizontalAlignment="Left" Margin="238,43,0,0" VerticalAlignment="Top" Width="341" Grid.Column="1" Click="Button_Click_7"/>
                     <DataGrid x:Name="Izd_list" HorizontalAlignment="Left" Height="268" Margin="238,68,0,0" VerticalAlignment="Top" Width="341" Grid.Column="1"/>
                 </Grid>
             </TabItem>
