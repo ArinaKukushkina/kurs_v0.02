@@ -29,5 +29,7 @@ namespace BLL.Interface
         void Create_Outtype(Model.Outtype o);
         List<Model.Chitatel_status> GetAllChitatelStatus();
         void Book_status_change(Model.Book p, int stat_id);
+        List<Model.Rubrika> GetAllRubrikas();
+        List<Model.Izdatelstvo> GetAllIzdatelstvs();
     }
 }

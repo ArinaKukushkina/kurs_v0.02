@@ -107,8 +107,17 @@ namespace kurs_v0._01
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            card_book book = new card_book();
+            card_book book = new card_book(crudServ.GetAllRubrikas(), crudServ.GetAllIzdatelstvs());
             book.Show();
+            book.Closing += Add_book;
+        }
+        private void Add_book(object sender, CancelEventArgs e)
+        {
+            if((sender as card_book).ok)
+            {
+                crudServ.CreateBook((sender as card_book).b);
+            }
+            refresh();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -125,6 +134,7 @@ namespace kurs_v0._01
         {
             int parse = chit_list.SelectedIndex;
             chit_list.ItemsSource = crudServ.GetAllChit();
+            book_list.ItemsSource = crudServ.GetAllBook();
             if (parse!=-1)
             {
                 chit_list.SelectedIndex = parse;
@@ -183,6 +193,11 @@ namespace kurs_v0._01
         private void chit_list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Button_Click_1(sender, e);
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

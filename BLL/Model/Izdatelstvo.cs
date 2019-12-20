@@ -10,5 +10,11 @@ namespace BLL.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public Izdatelstvo() { }
+        public Izdatelstvo(int i, string n)
+        {
+            Id = i;
+            Name = n;
+        }
     }
 }

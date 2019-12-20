@@ -12,7 +12,7 @@
                 <Grid Background="#FFE5E5E5">
                     <Grid HorizontalAlignment="Left" Height="328" Margin="10,18,0,0" VerticalAlignment="Top" Width="372">
                         <TextBox HorizontalAlignment="Left" Height="23" Margin="14,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166"/>
-                        <Button Content="Поиск" HorizontalAlignment="Left" Margin="194,13,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-1.013,0.7">
+                        <Button Content="Поиск" HorizontalAlignment="Left" Margin="194,13,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-1.013,0.7" Click="Button_Click_5">
                             <Button.Background>
                                 <ImageBrush/>
                             </Button.Background>
@@ -56,16 +56,20 @@
             </TabItem>
             <TabItem Header="Книги">
                 <Grid Background="#FFE5E5E5">
-                    <Grid HorizontalAlignment="Left" Height="41" Margin="22,37,0,0" VerticalAlignment="Top" Width="711">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="708*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid HorizontalAlignment="Left" Height="41" Margin="22,37,0,0" VerticalAlignment="Top" Width="711" Grid.ColumnSpan="2">
                         <TextBox HorizontalAlignment="Left" Height="23" Margin="0,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="302"/>
                         <Button Content="Поиск" HorizontalAlignment="Left" Margin="324,11,0,0" VerticalAlignment="Top" Width="75"/>
                         <Button Content="Расширенный поиск" HorizontalAlignment="Left" Margin="421,11,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_3"/>
                     </Grid>
-                    <Button Content="Добавить книгу" HorizontalAlignment="Left" Margin="22,9,0,0" VerticalAlignment="Top" Width="711" Click="Button_Click_2"/>
-                    <Grid HorizontalAlignment="Left" Height="256" Margin="22,80,0,0" VerticalAlignment="Top" Width="711">
-                        <DataGrid HorizontalAlignment="Left" Height="236" Margin="10,10,-325,0" VerticalAlignment="Top" Width="695"/>
+                    <Button Content="Добавить книгу" HorizontalAlignment="Left" Margin="22,9,0,0" VerticalAlignment="Top" Width="711" Click="Button_Click_2" Grid.ColumnSpan="2"/>
+                    <Grid HorizontalAlignment="Left" Height="256" Margin="22,80,0,0" VerticalAlignment="Top" Width="711" Grid.ColumnSpan="2">
+                        <DataGrid x:Name="book_list" HorizontalAlignment="Left" Height="236" Margin="10,10,-325,0" VerticalAlignment="Top" Width="695"/>
                     </Grid>
-                    <Grid HorizontalAlignment="Left" Height="253" Margin="407,83,0,0" VerticalAlignment="Top" Width="336"/>
+                    <Grid HorizontalAlignment="Left" Height="253" Margin="372.053,83,0,0" VerticalAlignment="Top" Width="336" Grid.Column="1"/>
 
                 </Grid>
             </TabItem>

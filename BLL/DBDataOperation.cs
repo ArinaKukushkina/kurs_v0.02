@@ -151,6 +151,15 @@ namespace BLL
         {
             db.Outtype.Create(new DAL.Outtype { Name = o.Name });
         }
+        public List<Model.Rubrika> GetAllRubrikas()
+        {
+            return db.Rubrika.GetList().Select(i => new Model.Rubrika(i.Id, i.Name, i.Head_id)).ToList();
+        }
+
+        public List<Model.Izdatelstvo> GetAllIzdatelstvs()
+        {
+            return db.Izdatelstvo.GetList().Select(i => new Model.Izdatelstvo(i.Id, i.Name)).ToList();
+        }
 
         public List<Model.Chitatel_status> GetAllChitatelStatus()
         {

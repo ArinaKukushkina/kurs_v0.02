@@ -30,9 +30,11 @@ namespace BLL.Model
             Rubrika_id = i.Rubrika_id;
             Rubrika_name = r.Name;
             Status_id = i.Status_id;
-            Status_name = st.Name;
+            if(st!=null)
+                Status_name = st.Name;
             Izdatelstvo_id = i.Izdatelstvo_id;
-            Izdatelstvo_name = iz.Name;
+            if(iz!=null)
+                Izdatelstvo_name = iz.Name;
         }
     }
 
