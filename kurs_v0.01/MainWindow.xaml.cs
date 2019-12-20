@@ -135,6 +135,8 @@ namespace kurs_v0._01
             int parse = chit_list.SelectedIndex;
             chit_list.ItemsSource = crudServ.GetAllChit();
             book_list.ItemsSource = crudServ.GetAllBook();
+            Rubrika_list.ItemsSource = crudServ.GetAllRubrikas();
+            Izd_list.ItemsSource = crudServ.GetAllIzdatelstvs();
             if (parse!=-1)
             {
                 chit_list.SelectedIndex = parse;
@@ -198,6 +200,21 @@ namespace kurs_v0._01
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            card_rubrika r = new card_rubrika(crudServ.GetAllRubrikas());
+            r.Show();
+            r.Closing += Add_rubrika;
+        }
+        private void Add_rubrika(object sender, CancelEventArgs e)
+        {
+            if((sender as card_rubrika).ok)
+            {
+                crudServ.Create_rubrika((sender as card_rubrika).rubrika);
+            }
+            refresh();
         }
     }
 }

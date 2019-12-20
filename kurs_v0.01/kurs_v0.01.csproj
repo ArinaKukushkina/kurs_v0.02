@@ -68,6 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="card_rubrika.xaml.cs">
+      <DependentUpon>card_rubrika.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Out_chit.xaml.cs">
       <DependentUpon>Out_chit.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="card_chit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="card_rubrika.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
