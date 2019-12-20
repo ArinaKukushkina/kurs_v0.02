@@ -74,6 +74,7 @@
     <Compile Include="card_rubrika.xaml.cs">
       <DependentUpon>card_rubrika.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Book.cs" />
     <Compile Include="Out_chit.xaml.cs">
       <DependentUpon>Out_chit.xaml</DependentUpon>
     </Compile>

@@ -134,7 +134,7 @@ namespace kurs_v0._01
         {
             int parse = chit_list.SelectedIndex;
             chit_list.ItemsSource = crudServ.GetAllChit();
-            book_list.ItemsSource = crudServ.GetAllBook();
+            book_list.ItemsSource = crudServ.GetAllBookGroup().Select(i=>new Model.Book(i.ToList()));
             Rubrika_list.ItemsSource = crudServ.GetAllRubrikas();
             Izd_list.ItemsSource = crudServ.GetAllIzdatelstvs();
             if (parse!=-1)

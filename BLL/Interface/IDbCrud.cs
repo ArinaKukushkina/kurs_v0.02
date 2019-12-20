@@ -31,5 +31,6 @@ namespace BLL.Interface
         void Book_status_change(Model.Book p, int stat_id);
         List<Model.Rubrika> GetAllRubrikas();
         List<Model.Izdatelstvo> GetAllIzdatelstvs();
+        IEnumerable<IGrouping<string, Model.Book>> GetAllBookGroup();
     }
 }

@@ -42,6 +42,11 @@ namespace BLL
             return db.Book.GetList().Select(i => new Model.Book(i,db.Izdatelstvo.GetItem(i.Izdatelstvo_id),db.Book_status.GetItem(i.Status_id),db.Rubrika.GetItem(i.Rubrika_id))).ToList();
         }
 
+        public IEnumerable<IGrouping<string, Model.Book>> GetAllBookGroup()
+        {
+            return db.Book.GetList().Select(i => new Model.Book(i, db.Izdatelstvo.GetItem(i.Izdatelstvo_id), db.Book_status.GetItem(i.Status_id), db.Rubrika.GetItem(i.Rubrika_id))).ToList().GroupBy(i => (i.Name+i.Rubrika_id+i.Autor+i.Annot+i.Izdatelstvo_id));
+        }
+
         public List<Model.Out> GetAllOut()                 
         {
             //return null;
