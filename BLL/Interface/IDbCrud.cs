@@ -25,7 +25,7 @@ namespace BLL.Interface
         List<Model.Out> Find(int st, int book);
         void Create_izdat(Model.Izdatelstvo iz);
         void Create_rubrika(Model.Rubrika r);
-        List<Model.Chitatel> GetAllChit();
+        List<Model.Chitatel> GetAllChit(int dolg);
         void Create_Outtype(Model.Outtype o);
         List<Model.Chitatel_status> GetAllChitatelStatus();
         void Book_status_change(Model.Book p, int stat_id);

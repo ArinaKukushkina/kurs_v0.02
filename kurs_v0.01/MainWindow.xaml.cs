@@ -128,13 +128,21 @@ namespace kurs_v0._01
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-
+            refresh();
         }
         private void refresh()
         {
             int parse = chit_list.SelectedIndex;
-            chit_list.ItemsSource = crudServ.GetAllChit();
-            book_list.ItemsSource = crudServ.GetAllBookGroup().Select(i=>new Model.Book(i.ToList()));
+            int dolg1 = 0;
+            if (dolg.IsChecked==true) dolg1 = 1;
+            if(search_chit.Text=="")
+                chit_list.ItemsSource = crudServ.GetAllChit(dolg1);
+            else
+                chit_list.ItemsSource = crudServ.GetAllChit(dolg1).Where(i => i.FIO.StartsWith(search_chit.Text));
+            if (search_book.Text == "")
+                book_list.ItemsSource = crudServ.GetAllBookGroup().Select(i=>new Model.Book(i.ToList()));
+            else
+                book_list.ItemsSource = crudServ.GetAllBookGroup().Select(i => new Model.Book(i.ToList())).Where(i => i.name.StartsWith(search_book.Text));
             Rubrika_list.ItemsSource = crudServ.GetAllRubrikas();
             Izd_list.ItemsSource = crudServ.GetAllIzdatelstvs();
             if (parse!=-1)
@@ -146,13 +154,23 @@ namespace kurs_v0._01
 
         }
 
+        private List<Model.Book> filter(List<Model.Book> book)
+        {
+            List<Model.Book> tmp=new List<Model.Book>();
+            foreach(Model.Book t in book)
+            {
+                if (t.onboard_count > 0) tmp.Add(t);
+            }
+            return tmp;
+        }
+
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             int parse = chit_list.SelectedIndex;
             if (parse == -1) MessageBox.Show("Не выбран читатель.");
             else
             {
-                Out_chit Out = new Out_chit(crudServ.GetAllBook(), crudServ.GetAllChit()[parse]);
+                Out_chit Out = new Out_chit(filter(crudServ.GetAllBookGroup().Select(i => new Model.Book(i.ToList())).ToList()), chit_list.SelectedValue as BLL.Model.Chitatel);
                 Out.Closing+= out_book_from_chit;
                 Out.Show();
             } 
@@ -230,6 +248,17 @@ namespace kurs_v0._01
                 crudServ.Create_izdat((sender as card_izd).izd);
             }
             refresh();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            refresh();
+            //chit_list.ItemsSource = crudServ.GetAllChit().Where(i=>i.FIO.StartsWith(search_chit.Text));
+        }
+
+        private void search_book_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            book_list.ItemsSource = crudServ.GetAllBookGroup().Select(i => new Model.Book(i.ToList())).Where(i=>i.name.StartsWith(search_book.Text));
         }
     }
 }

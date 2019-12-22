@@ -34,9 +34,9 @@ namespace DAL.Repository
 
         public void Update(Chitatel item)
         {
-            /*db.Entry(item).State = EntityState.Modified;
-            Save();*/
-            var entry = db.Entry(item);
+            db.Entry(item).State = EntityState.Modified;
+            Save();
+            /*var entry = db.Entry(item);
             if (entry.State == EntityState.Detached || entry.State == EntityState.Modified)
             {
                 entry.State = EntityState.Modified; //do it here
@@ -44,7 +44,7 @@ namespace DAL.Repository
                 db.Set<Chitatel>().Attach(item); //attach
 
                 Save(); //save it
-            }
+            }*/
         }
 
         public void Delete(int id)

@@ -19,7 +19,7 @@ namespace kurs_v0._01
     /// </summary>
     public partial class Out_chit : Window
     {
-        List<BLL.Model.Book> books;
+        List<Model.Book> books;
         public BLL.Model.Chitatel chit;
         public bool ok;
         public BLL.Model.Book book;
@@ -27,7 +27,7 @@ namespace kurs_v0._01
         {
             InitializeComponent();
         }
-        public Out_chit(List<BLL.Model.Book> l, BLL.Model.Chitatel ch)
+        public Out_chit(List<Model.Book> l, BLL.Model.Chitatel ch)
         {
             books = l;
             chit = ch;
@@ -40,7 +40,7 @@ namespace kurs_v0._01
         {
             ok = true;
             int parse = books_l.SelectedIndex;
-            book = books_l.SelectedValue as BLL.Model.Book;
+            book = (books_l.SelectedValue as Model.Book).onboard.FirstOrDefault();
             this.Close();
         }
     }

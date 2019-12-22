@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace kurs_v0._01.Model
 {
-    class Book
+    public class Book
     {
         public List<BLL.Model.Book> onboard { get; set; }
         public List<BLL.Model.Book> offboard { get; set; }

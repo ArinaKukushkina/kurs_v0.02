@@ -10,19 +10,18 @@
         <TabControl HorizontalAlignment="Left" Height="374" Margin="22,21,0,0" VerticalAlignment="Top" Width="749">
             <TabItem Header="Читатель">
                 <Grid Background="#FFE5E5E5">
-                    <Grid HorizontalAlignment="Left" Height="328" Margin="10,18,0,0" VerticalAlignment="Top" Width="372">
-                        <TextBox HorizontalAlignment="Left" Height="23" Margin="14,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166"/>
-                        <Button Content="Поиск" HorizontalAlignment="Left" Margin="194,13,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-1.013,0.7" Click="Button_Click_5">
-                            <Button.Background>
-                                <ImageBrush/>
-                            </Button.Background>
-                        </Button>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="76*"/>
+                        <ColumnDefinition Width="667*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid HorizontalAlignment="Left" Height="328" Margin="10,18,0,0" VerticalAlignment="Top" Width="372" Grid.ColumnSpan="2">
+                        <TextBox HorizontalAlignment="Left" x:Name="search_chit" Height="23" Margin="14,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266" TextChanged="TextBox_TextChanged"/>
                         <DataGrid x:Name="chit_list" HorizontalAlignment="Left" Height="277" Margin="14,49,0,0" VerticalAlignment="Top" Width="347" MouseUp="refresh_list" MouseDoubleClick="chit_list_MouseDoubleClick"/>
-                        <CheckBox Content="Должники" HorizontalAlignment="Left" Margin="285,16,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+                        <CheckBox Content="Должники" x:Name="dolg" HorizontalAlignment="Left" Margin="285,16,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
                     </Grid>
-                    <Grid HorizontalAlignment="Left" Height="308" Margin="387,18,0,0" VerticalAlignment="Top" Width="346"/>
-                    <Button Content="Выдать" HorizontalAlignment="Left" Margin="400,31,0,0" VerticalAlignment="Top" Width="156" Click="Button_Click_4"/>
-                    <TabControl HorizontalAlignment="Left" Height="290" Margin="400,56,0,0" VerticalAlignment="Top" Width="333">
+                    <Grid HorizontalAlignment="Left" Height="308" Margin="310.605,18,0,0" VerticalAlignment="Top" Width="346" Grid.Column="1"/>
+                    <Button Content="Выдать" HorizontalAlignment="Left" Margin="323.605,31,0,0" VerticalAlignment="Top" Width="156" Click="Button_Click_4" Grid.Column="1"/>
+                    <TabControl HorizontalAlignment="Left" Height="290" Margin="323.605,56,0,0" VerticalAlignment="Top" Width="333" Grid.Column="1">
                         <TabItem Header="История">
                             <Grid Background="#FFE5E5E5" Margin="0,0,0,-2">
                                 <DataGrid x:Name="list_out_chit" HorizontalAlignment="Left" Height="244" Margin="10,10,0,0" VerticalAlignment="Top" Width="307"/>
@@ -50,8 +49,8 @@
                             </Grid>
                         </TabItem>
                     </TabControl>
-                    <Button Content="Открыть карточку" HorizontalAlignment="Left" Margin="575,31,0,0" VerticalAlignment="Top" Width="141" Click="Button_Click_1"/>
-                    <Button Content="Добавить нового читателя" HorizontalAlignment="Left" Margin="25,3,0,0" VerticalAlignment="Top" Width="691" Click="Button_Click"/>
+                    <Button Content="Открыть карточку" HorizontalAlignment="Left" Margin="498.605,31,0,0" VerticalAlignment="Top" Width="141" Click="Button_Click_1" Grid.Column="1"/>
+                    <Button Content="Добавить нового читателя" HorizontalAlignment="Left" Margin="25,3,0,0" VerticalAlignment="Top" Width="691" Click="Button_Click" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Книги">
@@ -61,8 +60,7 @@
                         <ColumnDefinition Width="708*"/>
                     </Grid.ColumnDefinitions>
                     <Grid HorizontalAlignment="Left" Height="41" Margin="22,37,0,0" VerticalAlignment="Top" Width="711" Grid.ColumnSpan="2">
-                        <TextBox HorizontalAlignment="Left" Height="23" Margin="0,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="302"/>
-                        <Button Content="Поиск" HorizontalAlignment="Left" Margin="324,11,0,0" VerticalAlignment="Top" Width="75"/>
+                        <TextBox x:Name="search_book" HorizontalAlignment="Left" Height="23" Margin="0,8,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="416" TextChanged="search_book_TextChanged"/>
                         <Button Content="Расширенный поиск" HorizontalAlignment="Left" Margin="421,11,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_3"/>
                     </Grid>
                     <Button Content="Добавить книгу" HorizontalAlignment="Left" Margin="22,9,0,0" VerticalAlignment="Top" Width="711" Click="Button_Click_2" Grid.ColumnSpan="2"/>

@@ -126,9 +126,12 @@ namespace BLL
             throw new NotImplementedException();
         }
 
-        public List<Model.Chitatel> GetAllChit()
+        public List<Model.Chitatel> GetAllChit(int dolg)
         {
-            return db.Chitatel.GetList().Select(i => new Model.Chitatel(i,db.Chitatel_status.GetItem(i.Status_id), Find(i.Nomer_chit,-1),Find(Find(i.Nomer_chit, -1)).Select(j=>new Model.Book(db.Book.GetItem(j.Id_book),db.Izdatelstvo.GetItem(db.Book.GetItem(j.Id_book).Izdatelstvo_id),db.Book_status.GetItem(db.Book.GetItem(j.Id_book).Status_id),db.Rubrika.GetItem(db.Book.GetItem(j.Id_book).Rubrika_id))).ToList())).ToList();
+            Service.ChitatelService tmp = new Service.ChitatelService(db);
+            tmp.Refresh_stat(db.Chitatel.GetList().Select(i => new Model.Chitatel(i, db.Chitatel_status.GetItem(i.Status_id), Find(i.Nomer_chit, -1), Find(Find(i.Nomer_chit, -1)).Select(j => new Model.Book(db.Book.GetItem(j.Id_book), db.Izdatelstvo.GetItem(db.Book.GetItem(j.Id_book).Izdatelstvo_id), db.Book_status.GetItem(db.Book.GetItem(j.Id_book).Status_id), db.Rubrika.GetItem(db.Book.GetItem(j.Id_book).Rubrika_id))).ToList())).ToList());
+            return tmp.filter(db.Chitatel.GetList().Select(i => new Model.Chitatel(i, db.Chitatel_status.GetItem(i.Status_id), Find(i.Nomer_chit, -1), Find(Find(i.Nomer_chit, -1)).Select(j => new Model.Book(db.Book.GetItem(j.Id_book), db.Izdatelstvo.GetItem(db.Book.GetItem(j.Id_book).Izdatelstvo_id), db.Book_status.GetItem(db.Book.GetItem(j.Id_book).Status_id), db.Rubrika.GetItem(db.Book.GetItem(j.Id_book).Rubrika_id))).ToList())).ToList(),dolg);
+
         }
         public void Create_stat_book(Model.Book_status bs)
         {
