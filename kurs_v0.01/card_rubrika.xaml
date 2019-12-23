@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kurs_v0._01"
         mc:Ignorable="d"
-        Title="card_rubrika" Height="450" Width="443.552">
-    <Grid Margin="0,0,2,0">
+        Title="Добавление Рубрики" Height="272.368" Width="443.552">
+    <Grid Background="#F9B8A6" Margin="0,0,2,0">
 
         <Grid HorizontalAlignment="Left" Height="69" Margin="10,27,0,0" VerticalAlignment="Top" Width="414">
-            <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="10,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="393"/>
+            <TextBox x:Name="Name" Background="#FFEBF7" HorizontalAlignment="Left" Height="23" Margin="10,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="393"/>
             <Label Content="Название" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="69" Margin="10,105,0,0" VerticalAlignment="Top" Width="414">
             <Label Content="Родительский раздел" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top"/>
             <ComboBox x:Name="Head" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="394"/>
         </Grid>
-        <Button Content="Добавить рубрику" HorizontalAlignment="Left" Margin="135,179,0,0" VerticalAlignment="Top" Width="170" Click="Button_Click"/>
+        <Button Content="Добавить рубрику" Background="#FFEBF7" HorizontalAlignment="Left" Margin="135,179,0,0" VerticalAlignment="Top" Width="170" Click="Button_Click"/>
 
     </Grid>
 </Window>

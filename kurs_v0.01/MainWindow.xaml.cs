@@ -115,14 +115,15 @@ namespace kurs_v0._01
         {
             if((sender as card_book).ok)
             {
-                crudServ.CreateBook((sender as card_book).b);
+                for(int i=0;i< (sender as card_book).count;i++)
+                    crudServ.CreateBook((sender as card_book).b);
             }
             refresh();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            Poisk_book poisk = new Poisk_book();
+            Poisk_book poisk = new Poisk_book(crudServ.GetBook_Statuses(), crudServ.GetAllRubrikas(),crudServ.GetAllIzdatelstvs(),crudServ.GetAllBook());
             poisk.Show();
         }
 
@@ -151,7 +152,15 @@ namespace kurs_v0._01
                 refresh_info();
             }
             //chit_list.ItemsSource = crudServ.GetAllChitatelStatus();
-
+            /*chit_list.Columns[0].Visibility = Visibility.Collapsed;
+            chit_list.Columns[1].Header = "Номер читательского";
+            chit_list.Columns[2].Header = "ФИО";
+            chit_list.Columns[3].Header = "Адрес";
+            chit_list.Columns[4].Header = "Телефон";
+            chit_list.Columns[5].Visibility = Visibility.Collapsed;
+            chit_list.Columns[6].Header = "Статус";
+            chit_list.Columns[7].Visibility = Visibility.Collapsed;
+            chit_list.Columns[8].Visibility = Visibility.Collapsed;*/
         }
 
         private List<Model.Book> filter(List<Model.Book> book)
@@ -207,6 +216,14 @@ namespace kurs_v0._01
             BLL.Model.Chitatel chitatel = chit_list.SelectedValue as BLL.Model.Chitatel;
             BLL.Model.Book book = list_book_chit.SelectedValue as BLL.Model.Book;
             crudServ.CreateOut(new BLL.Model.Out { Id_chit = chitatel.Id, Id_book = book.Id, Date = DateTime.Now, Outtype_id = 2 });
+            refresh();
+        }
+
+        public void lost_book_from_chit(object sender, RoutedEventArgs e)
+        {
+            BLL.Model.Book book = list_book_chit.SelectedValue as BLL.Model.Book;
+            book.Status_id = 3;
+            crudServ.UpdateBook(book);
             refresh();
         }
 

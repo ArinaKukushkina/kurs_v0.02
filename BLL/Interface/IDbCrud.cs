@@ -32,5 +32,6 @@ namespace BLL.Interface
         List<Model.Rubrika> GetAllRubrikas();
         List<Model.Izdatelstvo> GetAllIzdatelstvs();
         IEnumerable<IGrouping<string, Model.Book>> GetAllBookGroup();
+        List<Model.Book_status> GetBook_Statuses();
     }
 }

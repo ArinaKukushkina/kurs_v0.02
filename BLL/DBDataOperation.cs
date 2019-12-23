@@ -90,7 +90,7 @@ namespace BLL
         public void UpdateBook(Model.Book p)
         {
             DAL.Book tmp = db.Book.GetItem(p.Id);
-            tmp.Status_id = 1;
+            tmp.Status_id = p.Status_id;
             db.Book.Update(tmp);
             Save();
         }
@@ -172,6 +172,10 @@ namespace BLL
         public List<Model.Chitatel_status> GetAllChitatelStatus()
         {
             return db.Chitatel_status.GetList().Select(i => new Model.Chitatel_status { Id = i.Id, Name = i.Name }).ToList();
+        }
+        public List<Model.Book_status> GetBook_Statuses()
+        {
+            return db.Book_status.GetList().Select(i => new Model.Book_status { Id = i.Id, Name = i.Name }).ToList();
         }
     }
 }

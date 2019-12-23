@@ -5,26 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kurs_v0._01"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TabControl HorizontalAlignment="Left" Height="374" Margin="22,21,0,0" VerticalAlignment="Top" Width="749">
-            <TabItem Header="Читатель">
-                <Grid Background="#FFE5E5E5">
+        Title="Упрвление библиотекой" Height="auto" Width="auto">
+    <Grid Background="#936D6C">
+        <TabControl Margin="21" >
+            <TabItem Header="Читатель" >
+                <Grid Background="#F9B8A6">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="76*"/>
-                        <ColumnDefinition Width="667*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid HorizontalAlignment="Left" Height="328" Margin="10,18,0,0" VerticalAlignment="Top" Width="372" Grid.ColumnSpan="2">
-                        <TextBox HorizontalAlignment="Left" x:Name="search_chit" Height="23" Margin="14,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266" TextChanged="TextBox_TextChanged"/>
-                        <DataGrid x:Name="chit_list" HorizontalAlignment="Left" Height="277" Margin="14,49,0,0" VerticalAlignment="Top" Width="347" MouseUp="refresh_list" MouseDoubleClick="chit_list_MouseDoubleClick"/>
-                        <CheckBox Content="Должники" x:Name="dolg" HorizontalAlignment="Left" Margin="285,16,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+                    <Grid Margin="5,5,5,5"  Width="auto">
+                        <TextBox  Background="#FFEBF7" x:Name="search_chit" Height="23" Margin="14,10,100,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="TextBox_TextChanged"/>
+                        <DataGrid  CanUserAddRows="False" Background="#FEF9E0" x:Name="chit_list" Margin="14,49,14,14" MouseUp="refresh_list" MouseDoubleClick="chit_list_MouseDoubleClick" ItemsSource="{Binding list}"  AutoGenerateColumns="False" Height="auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="№ билета" Binding="{Binding Nomer_chit}"/>
+                                <DataGridTextColumn Header="ФИО" Binding="{Binding FIO}"/>
+                                <DataGridTextColumn Header="Адрес" Binding="{Binding Adress}"/>
+                                <DataGridTextColumn Header="Телефон" Binding="{Binding Telephone}"/>
+                                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Status_id}"/>
+                                <DataGridTextColumn Header="Статус" Binding="{Binding Status_name}"/>
+                                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Outlist}"/>
+                                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Booklist}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <CheckBox Content="Должники" x:Name="dolg" Margin="0,16,10,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" HorizontalAlignment="Right" Width="80" />
                     </Grid>
-                    <Grid HorizontalAlignment="Left" Height="308" Margin="310.605,18,0,0" VerticalAlignment="Top" Width="346" Grid.Column="1"/>
-                    <Button Content="Выдать" HorizontalAlignment="Left" Margin="323.605,31,0,0" VerticalAlignment="Top" Width="156" Click="Button_Click_4" Grid.Column="1"/>
-                    <TabControl HorizontalAlignment="Left" Height="290" Margin="323.605,56,0,0" VerticalAlignment="Top" Width="333" Grid.Column="1">
+                    <Grid Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2"/>
+                    <Button FontWeight="Bold"  Background="#FFEBF7" Content="Выдать" HorizontalAlignment="Left" Margin="15,30,0,0" VerticalAlignment="Top" Width="156" Click="Button_Click_4" Grid.Column="2">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#BBABA7"  ShadowDepth="3"></DropShadowEffect>
+                        </Button.Effect>
+                    </Button>
+                    <TabControl Height="auto" Margin="14,58,14,14" Width="auto" Grid.Column="1">
                         <TabItem Header="История">
                             <Grid Background="#FFE5E5E5" Margin="0,0,0,-2">
-                                <DataGrid x:Name="list_out_chit" HorizontalAlignment="Left" Height="244" Margin="10,10,0,0" VerticalAlignment="Top" Width="307"/>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="42*"/>
+                                    <ColumnDefinition Width="67*"/>
+                                </Grid.ColumnDefinitions>
+                                <DataGrid  CanUserAddRows="False" Background="#FEF9E0" x:Name="list_out_chit" Margin="5" Grid.ColumnSpan="2" ItemsSource="{Binding list}"  AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Visibility="Hidden" Binding="{Binding Id}"/>
+                                        <DataGridTextColumn Visibility="Hidden"  Binding="{Binding Id_book}"/>
+                                        <DataGridTextColumn Visibility="Hidden"  Binding="{Binding Id_chit}"/>
+                                        <DataGridTextColumn Header="Книга" Binding="{Binding Name_book}"/>
+                                        <DataGridTextColumn Visibility="Hidden" Binding="{Binding Name_student}"/>
+                                        <DataGridTextColumn Visibility="Hidden" Binding="{Binding Outtype_id}"/>
+                                        <DataGridTextColumn Header="Операция" Binding="{Binding Outtype_name}"/>
+                                        <DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Выданные книги">
@@ -35,67 +66,105 @@
                                     <ColumnDefinition Width="17*"/>
                                     <ColumnDefinition Width="289*"/>
                                 </Grid.ColumnDefinitions>
-                                <DataGrid x:Name="list_book_chit" HorizontalAlignment="Left" Height="232" Margin="4,10,0,0" VerticalAlignment="Top" Width="307" Grid.ColumnSpan="3" Grid.Column="1">
+                                <DataGrid  CanUserAddRows="False" Background="#FEF9E0" x:Name="list_book_chit" Margin="5" Grid.ColumnSpan="4" ItemsSource="{Binding list}" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
+                                        <DataGridTextColumn Visibility="Hidden" Binding="{Binding ID}"/>
+                                        <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                                        <DataGridTextColumn Header="Автор" Binding="{Binding Autor}"/>
+                                        <DataGridTextColumn Visibility="Hidden" Binding="{Binding Status_id}"/>
+                                        <DataGridTextColumn Header="Статус" Binding="{Binding Status_name}"/>
+                                        <DataGridTextColumn Visibility="Hidden" Binding="{Binding Rubrika_id}"/>
+                                        <DataGridTextColumn Header="Рубрика" Binding="{Binding Rubrika_name}"/>
+                                        <DataGridTextColumn Header="Год издания" Binding="{Binding God}"/>
+                                        <DataGridTextColumn Visibility="Hidden" Binding="{Binding Izdatelstvo_id}"/>
+                                        <DataGridTextColumn Header="Издательство" Binding="{Binding Izdatelstvo_name}"/>
+                                        <DataGridTextColumn Visibility="Hidden" Binding="{Binding Annot}"/>
                                         <DataGridTemplateColumn>
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Button Click="return_book_from_chit">Принять</Button>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Button Click="return_book_from_chit">Принять</Button>
+                                                        <Button Click="lost_book_from_chit">Утеряна</Button>
+                                                    </StackPanel>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
+
                                         </DataGridTemplateColumn>
+
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
                         </TabItem>
                     </TabControl>
-                    <Button Content="Открыть карточку" HorizontalAlignment="Left" Margin="498.605,31,0,0" VerticalAlignment="Top" Width="141" Click="Button_Click_1" Grid.Column="1"/>
-                    <Button Content="Добавить нового читателя" HorizontalAlignment="Left" Margin="25,3,0,0" VerticalAlignment="Top" Width="691" Click="Button_Click" Grid.ColumnSpan="2"/>
+                    <Button FontWeight="Bold" Background="#FFEBF7" Content="Открыть карточку" Margin="200,30,0,0" VerticalAlignment="Top" Click="Button_Click_1" Grid.Column="1" HorizontalAlignment="Left" Width="141">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#BBABA7"  ShadowDepth="3"></DropShadowEffect>
+                        </Button.Effect>
+                    </Button>
+                    <Button Background="#FFEBF7" FontWeight="Bold"  Content="Добавить нового читателя" Margin="15,5,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.Column="1" HorizontalAlignment="Left" Width="196">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#BBABA7"  ShadowDepth="3"></DropShadowEffect>
+                        </Button.Effect>
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Книги">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="708*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid HorizontalAlignment="Left" Height="41" Margin="22,37,0,0" VerticalAlignment="Top" Width="711" Grid.ColumnSpan="2">
-                        <TextBox x:Name="search_book" HorizontalAlignment="Left" Height="23" Margin="0,8,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="416" TextChanged="search_book_TextChanged"/>
-                        <Button Content="Расширенный поиск" HorizontalAlignment="Left" Margin="421,11,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_3"/>
+                <Grid Background="#F9B8A6">
+                    <Grid Height="41" Margin="10,37,10,0" VerticalAlignment="Top" Width="auto">
+                        <TextBox  Background="#FFEBF7" x:Name="search_book" Height="23" Margin="5,8,150,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="search_book_TextChanged"/>
+                        <Button Background="#FFEBF7" Content="Расширенный поиск" Height="23" Margin="0,8,5,0" VerticalAlignment="Top" Click="Button_Click_3" HorizontalAlignment="Right" Width="125"/>
                     </Grid>
-                    <Button Content="Добавить книгу" HorizontalAlignment="Left" Margin="22,9,0,0" VerticalAlignment="Top" Width="711" Click="Button_Click_2" Grid.ColumnSpan="2"/>
-                    <Grid HorizontalAlignment="Left" Height="256" Margin="22,80,0,0" VerticalAlignment="Top" Width="711" Grid.ColumnSpan="2">
-                        <DataGrid x:Name="book_list" HorizontalAlignment="Left" Height="236" Margin="10,10,-325,0" VerticalAlignment="Top" Width="695"/>
+                    <Button Background="#FFEBF7" Content="Добавить книгу" Margin="0,15,15,0" VerticalAlignment="Top" Click="Button_Click_2" HorizontalAlignment="Right" Width="125"/>
+                    <Grid Margin="10,80,10,15">
+                        <DataGrid  CanUserAddRows="False" Background="#FEF9E0" x:Name="book_list" Height="auto" Margin="5,5,5,5" ItemsSource="{Binding list}" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Название" Binding="{Binding name}"/>
+                                <DataGridTextColumn Visibility="Hidden" Binding="{Binding onboard}"/>
+                                <DataGridTextColumn Visibility="Hidden" Binding="{Binding offboard}"/>
+                                <DataGridTextColumn Visibility="Hidden" Binding="{Binding lost}"/>
+                                <DataGridTextColumn Header="В наличии" Binding="{Binding onboard_count}"/>
+                                <DataGridTextColumn Header="Выдано" Binding="{Binding offboard_count}"/>
+                                <DataGridTextColumn Header="Утеряно" Binding="{Binding lost_count}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Grid>
-                    <Grid HorizontalAlignment="Left" Height="253" Margin="372.053,83,0,0" VerticalAlignment="Top" Width="336" Grid.Column="1"/>
+                    <Grid HorizontalAlignment="Left" Height="253" Margin="270.211,83,0,0" VerticalAlignment="Top" Width="336" Grid.Column="2"/>
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Настройки" HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="92" Margin="-2,0,0,0">
-                <Grid Background="#FFE5E5E5">
+            <TabItem Header="Настройки" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="92" Margin="-2,0,0,0">
+                <Grid Background="#F9B8A6">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="143*"/>
-                        <ColumnDefinition Width="600*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Border BorderBrush="Black" BorderThickness="2" Grid.ColumnSpan="2" Margin="10,0,382,0" RenderTransformOrigin="0.68,0.494">
-                        <Grid HorizontalAlignment="Left" Height="326" Margin="10,10,-85,0" VerticalAlignment="Top" Width="333" Grid.ColumnSpan="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="188*"/>
-                                <ColumnDefinition Width="39*"/>
-                                <ColumnDefinition Width="106*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Content="Рубрики" HorizontalAlignment="Left" Margin="143,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Border BorderBrush="Black" BorderThickness="2" Grid.ColumnSpan="1" Margin="10" RenderTransformOrigin="0.68,0.494">
+                        <Grid Margin="0" Grid.ColumnSpan="1">
+                            <Label Content="Рубрики" HorizontalAlignment="Left" Margin="143,0,0,0" Height="30" VerticalAlignment="Top"/>
+                            <Button Background="#FFEBF7" Content="Добавить рубрику" HorizontalAlignment="Left" Margin="5,35,0,0" VerticalAlignment="Top" Width="200" Grid.ColumnSpan="1" Click="Button_Click_6"/>
+                            <DataGrid  CanUserAddRows="False" Background="#FEF9E0" x:Name="Rubrika_list" Margin="5,68,5,5" ItemsSource="{Binding list}" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Visibility="Hidden" Binding="{Binding ID}"/>
+                                    <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="Rubrika_list" HorizontalAlignment="Left" Height="268" Margin="21,68,0,0" VerticalAlignment="Top" Width="330" Grid.ColumnSpan="2"/>
-                    <Button Content="Добавить рубрику" HorizontalAlignment="Left" Margin="21,43,0,0" VerticalAlignment="Top" Width="330" Grid.ColumnSpan="2" Click="Button_Click_6"/>
-                    <Border BorderBrush="Black" BorderThickness="2" Margin="223,0,8,0" RenderTransformOrigin="0.68,0.494" Grid.Column="1">
-                        <Grid HorizontalAlignment="Left" Height="326" Margin="10,10,0,0" VerticalAlignment="Top" Width="239" Grid.ColumnSpan="2">
-                            <Label Content="Издательства" HorizontalAlignment="Left" Margin="132,0,0,300" VerticalAlignment="Bottom" RenderTransformOrigin="0.016,0.602"/>
+
+
+                    <Border BorderBrush="Black" BorderThickness="2" Margin="10" Grid.Column="2">
+                        <Grid Height="auto" Margin="0,0,0,0" Width="auto" Grid.ColumnSpan="2">
+                            <Label Content="Издательства" HorizontalAlignment="Left" Margin="143,5,0,0"/>
+                            <Button Background="#FFEBF7" Content="Добавить издательство" Margin="5,35,0,0" VerticalAlignment="Top" Click="Button_Click_7" HorizontalAlignment="Left" Width="327"/>
+                            <DataGrid  CanUserAddRows="False" Background="#FEF9E0" x:Name="Izd_list" Margin="5,68,5,5" Width="auto" ItemsSource="{Binding list}" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Visibility="Hidden" Binding="{Binding ID}"/>
+                                    <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                     </Border>
-                    <Button Content="Добавить издательство" HorizontalAlignment="Left" Margin="238,43,0,0" VerticalAlignment="Top" Width="341" Grid.Column="1" Click="Button_Click_7"/>
-                    <DataGrid x:Name="Izd_list" HorizontalAlignment="Left" Height="268" Margin="238,68,0,0" VerticalAlignment="Top" Width="341" Grid.Column="1"/>
+
                 </Grid>
             </TabItem>
         </TabControl>

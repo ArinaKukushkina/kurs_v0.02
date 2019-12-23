@@ -5,33 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kurs_v0._01"
         mc:Ignorable="d"
-        Title="Poisk_book" Height="450" Width="907.877">
-    <Grid Margin="0,0,2,0">
+        Title="Расширенный поиск" Height="450" Width="907.877">
+    <Grid Background="#F9B8A6" Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Grid HorizontalAlignment="Left" Height="70" Margin="24,24,0,0" VerticalAlignment="Top" Width="145">
-            <ComboBox HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="status"  HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120"/>
             <Label Content="Статус" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="70" Margin="164,24,0,0" VerticalAlignment="Top" Width="145">
-            <ComboBox HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120"/>
-            <Label Content="Автор" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="70" Margin="298,24,0,0" VerticalAlignment="Top" Width="145">
-            <ComboBox HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120"/>
+        <Grid HorizontalAlignment="Left" Height="70" Margin="169,24,0,0" VerticalAlignment="Top" Width="145">
+            <ComboBox x:Name="rubrika" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120"/>
             <Label Content="Рубрика" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="70" Margin="429,24,0,0" VerticalAlignment="Top" Width="145">
-            <ComboBox HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120"/>
-            <Label Content="Год издания" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="70" Margin="562,24,0,0" VerticalAlignment="Top" Width="145">
-            <ComboBox HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120"/>
+        <Grid HorizontalAlignment="Left" Height="70" Margin="314,24,0,0" VerticalAlignment="Top" Width="145">
+            <ComboBox  x:Name="izdat" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120"/>
             <Label Content="Издательство" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
-            <Button Content="Поиск" HorizontalAlignment="Left" Margin="202,38,-132,0" VerticalAlignment="Top" Width="75"/>
+            <Button Content="Поиск" Background="#FFEBF7" HorizontalAlignment="Left" Margin="289,40,-219,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+            <Button Content="Очистить" Background="#FFEBF7" HorizontalAlignment="Left" Margin="161,40,-139,0" VerticalAlignment="Top" Width="123" Click="Button_Click"/>
         </Grid>
-        <DataGrid HorizontalAlignment="Left" Height="310" Margin="10,99,0,0" VerticalAlignment="Top" Width="878"/>
+        <DataGrid Background="#FEF9E0" HorizontalAlignment="Left" x:Name="rich_search" Height="310" Margin="10,99,0,0" VerticalAlignment="Top" Width="878" ItemsSource="{Binding list}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Автор" Binding="{Binding Autor}"/>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Status_id}"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status_name}"/>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Rubrika_id}"/>
+                <DataGridTextColumn Header="Рубрика" Binding="{Binding Rubrika_name}"/>
+                <DataGridTextColumn Header="Год издания" Binding="{Binding God}"/>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Izdatelstvo_id}"/>
+                <DataGridTextColumn Header="Издательство" Binding="{Binding Izdatelstvo_name}"/>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding Annot}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

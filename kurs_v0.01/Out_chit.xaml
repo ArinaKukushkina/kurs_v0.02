@@ -5,12 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kurs_v0._01"
         mc:Ignorable="d"
-        Title="Out_chit" Height="532.952" Width="660.392">
-    <Grid Margin="0,0,2,0">
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="39,38,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="179,38,0,0" VerticalAlignment="Top" Width="75" Height="23"/>
-        <DataGrid x:Name="books_l" HorizontalAlignment="Left" Height="404" Margin="39,72,-117,0" VerticalAlignment="Top" Width="565">
+        Title="Выдача" Height="532.952" Width="660.392">
+    <Grid Background="#F9B8A6" Margin="0,0,2,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="299*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Background="#FFEBF7" HorizontalAlignment="Left" Height="23" Margin="37.39,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Button Content="Поиск" Background="#FFEBF7" HorizontalAlignment="Left" Margin="127,38,0,0" VerticalAlignment="Top" Width="75" Height="23" Grid.Column="2"/>
+        <DataGrid Background="#FEF9E0" CanUserAddRows="False" x:Name="books_l" HorizontalAlignment="Left" Height="404" Margin="37.39,72,0,0" VerticalAlignment="Top" Width="565" Grid.ColumnSpan="2" Grid.Column="1" ItemsSource="{Binding list}" AutoGenerateColumns="False">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding name}"/>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding onboard}"/>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding offboard}"/>
+                <DataGridTextColumn Visibility="Hidden" Binding="{Binding lost}"/>
+                <DataGridTextColumn Header="В наличии" Binding="{Binding onboard_count}"/>
+                <DataGridTextColumn Header="Выдано" Binding="{Binding offboard_count}"/>
+                <DataGridTextColumn Header="Утеряно" Binding="{Binding lost_count}"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -20,6 +32,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="info" HorizontalAlignment="Left" Margin="39,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="565"/>
+        <TextBlock x:Name="info" HorizontalAlignment="Left" Margin="37.39,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="565" Grid.ColumnSpan="2" Grid.Column="1"/>
     </Grid>
 </Window>

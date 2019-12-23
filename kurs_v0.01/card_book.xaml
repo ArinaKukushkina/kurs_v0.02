@@ -5,36 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kurs_v0._01"
         mc:Ignorable="d"
-        Title="card_book" Height="473.63" Width="800">
-    <Grid>
-        <Grid HorizontalAlignment="Left" Height="42" Margin="10,28,0,0" VerticalAlignment="Top" Width="772">
-            <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        Title="Добавление книги" Height="473.63" Width="510.836">
+    <Grid Background="#F9B8A6">
+        <Grid HorizontalAlignment="Left" Height="42" Margin="10,28,0,0" VerticalAlignment="Top" Width="467">
+            <TextBox x:Name="Name" Background="#FFEBF7" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
             <Label Content="название" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="42" Margin="10,77,0,0" VerticalAlignment="Top" Width="772">
-            <TextBox x:Name="Autor" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Grid HorizontalAlignment="Left" Height="42" Margin="10,77,0,0" VerticalAlignment="Top" Width="467">
+            <TextBox x:Name="Autor" Background="#FFEBF7" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
             <Label Content="Автор" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="42" Margin="10,123,0,0" VerticalAlignment="Top" Width="772">
+        <Grid HorizontalAlignment="Left" Height="42" Margin="10,123,0,0" VerticalAlignment="Top" Width="467">
             <Label Content="Рубрика" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top"/>
-            <ComboBox x:Name="Rubrika" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="Rubrika" Background="#FFEBF7" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="42" Margin="10,171,0,0" VerticalAlignment="Top" Width="772">
-            <TextBox x:Name="Count" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Grid HorizontalAlignment="Left" Height="42" Margin="10,171,0,0" VerticalAlignment="Top" Width="467">
+            <TextBox x:Name="Count" Background="#FFEBF7" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
             <Label Content="Кол-во" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="42" Margin="10,215,0,0" VerticalAlignment="Top" Width="772">
-            <TextBox x:Name="God" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Grid HorizontalAlignment="Left" Height="42" Margin="10,215,0,0" VerticalAlignment="Top" Width="467">
+            <TextBox x:Name="God" Background="#FFEBF7" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
             <Label Content="Год издания" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="42" Margin="10,261,0,0" VerticalAlignment="Top" Width="772">
+        <Grid HorizontalAlignment="Left" Height="42" Margin="10,261,0,0" VerticalAlignment="Top" Width="467">
             <Label Content="Издательство" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top"/>
             <ComboBox x:Name="Izdat" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="81" Margin="10,305,0,0" VerticalAlignment="Top" Width="772">
-            <Label Content="Аннотация" HorizontalAlignment="Left" Margin="151,10,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="Annot" HorizontalAlignment="Left" Height="40" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="752"/>
+        <Grid HorizontalAlignment="Left" Height="81" Margin="10,305,0,0" VerticalAlignment="Top" Width="467">
+            <Label Content="Аннотация" HorizontalAlignment="Left" Margin="151,5,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="Annot" Background="#FFEBF7" HorizontalAlignment="Left" Height="40" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="460"/>
         </Grid>
-        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="176,399,0,0" VerticalAlignment="Top" Width="359" Height="34" Click="Button_Click"/>
+        <Button Content="Сохранить" Background="#FFEBF7" HorizontalAlignment="Left" Margin="76,399,0,0" VerticalAlignment="Top" Width="359" Height="34" Click="Button_Click"/>
     </Grid>
 </Window>
